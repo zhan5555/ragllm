@@ -1,20 +1,17 @@
 # SECTION 1: Install dependencies. Refer to .env.example to handle ENVIRONMENT VARIABLES
 #  SECTION 2: IMPORTS AND CONFIG
-from langchain.text_splitter import SentenceTransformersTokenTextSplitter, RecursiveCharacterTextSplitter
-from langchain.document_loaders import PyPDFLoader
 import os
-import uuid
-import Pinecone, ServerlessSpec
-import pickle
-from transformers import AutoTokenizer, AutoModel, pipeline, AutoModelForCausalLM
-import openai
-from huggingface_hub import login
-from concurrent.futures import ThreadPoolExecutor
-from langchain.schema import Document
-import requests, gc, torch, numpy as np
+import gc
+import re
+import torch
+import numpy as np
 from typing import TypedDict
 from difflib import SequenceMatcher
+from huggingface_hub import InferenceClient as HFInferenceClient
+from transformers import pipeline
+from pinecone import Pinecone, ServerlessSpec
 from langgraph.graph import StateGraph, END
+
 
 # add a debug wrapper for dev - for each node in LangGraph flow
 def debug_node(name):
