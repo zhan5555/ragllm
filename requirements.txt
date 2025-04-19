@@ -1,26 +1,29 @@
-# --- Core libraries ---
-streamlit
-transformers
-sentence-transformers
-torch
-accelerate
-huggingface-hub
+# === Core libraries ===
+streamlit               # Web UI framework for the app
+transformers            # Hugging Face model loading and tokenization
+sentence-transformers   # Embedding models (optional, but common fallback)
+torch                   # Backend for Hugging Face models
+accelerate              # Optimizes model execution, esp. with GPU
+huggingface-hub         # Access to hosted models and endpoints on HF Hub
+numpy                   # Needed for vector math and mean pooling
 
-# --- Vector store ---
-pinecone-client==3.0.2
+# === Vector store ===
+pinecone-client==3.0.2  # Pinecone vector DB client for retrieval
 
-# --- Langchain graph framework ---
-langchain 
-langgraph
+# === LangGraph workflow ===
+langchain               # Base dependency for LangGraph
+langgraph               # Framework to build graph-based RAG workflows
 
-# --- PDF/document processing ---
-pdfplumber
-pypdf
-pymupdf
+# === PDF/document parsing (for future upload feature) ===
+pdfplumber              # Extract structured text from PDFs
+pypdf                   # Merge/split/read PDFs
+pymupdf                 # Fast PDF search and rendering (aka fitz)
 
-# --- Additional utilities ---
-bitsandbytes
-sentencepiece
-requests
+# === Gemini / LLM API ===
+google-generativeai     # Gemini model integration for Google API
 
-
+# === Additional utilities ===
+bitsandbytes            # Lightweight model loading (esp. 4-bit quantized models)
+sentencepiece           # Tokenizer dependency used by some transformer models (e.g., Qwen2)
+requests                # HTTP client for calling APIs (e.g., Hugging Face endpoints)
+protobuf                # Handles serialization for Gemini + Transformers
